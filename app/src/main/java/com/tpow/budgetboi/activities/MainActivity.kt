@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = AccountListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.addItemDecoration(AccountItemDecoration(resources.getDimensionPixelSize(R.dimen.account_vertical_margin)))
 
         accountViewModel.allAccounts.observe(this, Observer { accounts ->
             accounts?.let { adapter.submitList(it) }
