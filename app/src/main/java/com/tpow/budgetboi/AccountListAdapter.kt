@@ -1,13 +1,17 @@
 package com.tpow.budgetboi
 
 import android.graphics.Rect
+import android.icu.text.NumberFormat
+import android.icu.util.Currency
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
+import java.math.RoundingMode
 
 class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountViewHolder {
@@ -16,18 +20,43 @@ class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountCompar
 
     override fun onBindViewHolder(holder : AccountViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.institution, current.accountName)
+        holder.bind(current.institution, current.accountName, current.balance)
     }
 }
 
 class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val InstitutionTextView : MaterialTextView = itemView.findViewById(R.id.institution_text)
-    private val AccountTextView : MaterialTextView = itemView.findViewById(R.id.account_text)
+    private val institutionTextView : MaterialTextView = itemView.findViewById(R.id.institution_text)
+    private val accountTextView : MaterialTextView = itemView.findViewById(R.id.account_text)
+    private val balanceTextView : MaterialTextView = itemView.findViewById(R.id.balance_text)
 
-    fun bind(institutionText: String?, accountText : String?)
+    fun bind(institutionText: String?, accountText : String?, balance: Double?)
     {
-        InstitutionTextView.text = institutionText
-        AccountTextView.text = accountText
+        institutionTextView.text = institutionText
+        accountTextView.text = accountText
+        if (balance == null)
+        {
+            balanceTextView.text = "N/A"
+        }
+        else
+        {
+            when {
+                balance > 0 -> {
+                    balanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.positiveGreen))
+                }
+                balance < 0 -> {
+                    balanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.negativeRed))
+                }
+                else -> {
+                    balanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.design_default_color_on_primary))
+                }
+            }
+
+            val numberFormat = NumberFormat.getInstance(NumberFormat.CURRENCYSTYLE)
+            numberFormat.minimumFractionDigits = 2
+            numberFormat.maximumFractionDigits = 2
+            numberFormat.currency = Currency.getInstance("USD")
+            balanceTextView.text = numberFormat.format(balance)
+        }
     }
 
     companion object {

@@ -13,6 +13,7 @@ class NewAccountActivity : AppCompatActivity() {
 
     private lateinit var editInstitutionView: EditText
     private lateinit var editAccountView: EditText
+    private val STARTING_BALANCE = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -36,6 +37,7 @@ class NewAccountActivity : AppCompatActivity() {
                 val accountList = arrayListOf<CharSequence>()
                 accountList.add(institution)
                 accountList.add(account)
+                accountList.add(STARTING_BALANCE.toString())
                 replyIntent.putCharSequenceArrayListExtra(EXTRA_NEW_ACCOUNT, accountList)
                 setResult(Activity.RESULT_OK, replyIntent)
             }

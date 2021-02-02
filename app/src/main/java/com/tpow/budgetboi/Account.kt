@@ -8,5 +8,6 @@ import androidx.room.PrimaryKey
 data class Account(
     @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "institution") val institution: String?,
-    @ColumnInfo(name = "account_name") val accountName: String?
+    @ColumnInfo(name = "account_name") val accountName: String?,
+    @ColumnInfo(name = "balance") val balance: Double?
 )
