@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity() {
         if(requestCode == newAccountActivityRequestCode && resultCode == Activity.RESULT_OK)
         {
             data?.getStringArrayListExtra(NewAccountActivity.EXTRA_NEW_ACCOUNT)?.let {
-                val account = Account(0, it[0], it[1])
+                //Todo: throw exception for parse error
+                val account = Account(0, it[0], it[1], it[2].toDoubleOrNull())
                 accountViewModel.insert(account)
             }
         }

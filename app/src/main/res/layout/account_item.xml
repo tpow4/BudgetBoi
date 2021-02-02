@@ -14,35 +14,51 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/institution_text"
-                android:layout_width="wrap_content"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/account_text"
+                app:layout_constraintEnd_toStartOf="@+id/textView3"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/account_text"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/institution_text"
+                app:layout_constraintStart_toStartOf="@+id/institution_text"
+                app:layout_constraintTop_toBottomOf="@+id/institution_text" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/balance_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/institution_text"
-                app:layout_constraintStart_toEndOf="@+id/institution_text"
-                app:layout_constraintTop_toTopOf="@+id/institution_text" />
+                android:layout_marginEnd="16dp"
+                android:text="$10,000"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

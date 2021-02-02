@@ -5,9 +5,7 @@
     android:id="@+id/boxInsetLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_dark"
-    tools:context=".activities.NewAccountActivity"
-    tools:deviceIds="wear">
+    tools:context=".activities.NewAccountActivity">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/newAccountTitleText"
