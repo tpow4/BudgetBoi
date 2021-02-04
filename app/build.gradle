@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 android {
@@ -38,23 +40,26 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$rootProject.coreVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
-    implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
-    implementation 'androidx.activity:activity-ktx:1.1.0'
-
-
+    implementation "androidx.activity:activity-ktx:$rootProject.activityVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navigationVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.navigation:navigation-compose:1.0.0-alpha06"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
 
     testImplementation 'junit:junit:4.13.1'
+    testImplementation "androidx.room:room-testing:$rootProject.roomVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    //Room Components
-    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
-    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
-    testImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+    androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"    
 
     // coroutines for getting off the UI thread
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
