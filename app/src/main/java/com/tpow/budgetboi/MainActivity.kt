@@ -1,4 +1,4 @@
-package com.tpow.budgetboi.activities
+package com.tpow.budgetboi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
