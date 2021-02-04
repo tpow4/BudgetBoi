@@ -50,7 +50,6 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navigationVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha06"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
