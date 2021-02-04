@@ -9,16 +9,20 @@
         android:id="@+id/overview"
         android:name="com.tpow.budgetboi.Overview"
         android:label="overview_fragment"
-        tools:layout="@layout/overview_fragment" >
+        tools:layout="@layout/overview_fragment">
         <action
-            android:id="@+id/action_overview_to_newAccount2"
+            android:id="@+id/action_overview_to_newAccount"
             app:destination="@id/newAccount" />
+        <argument
+            android:name="EntryError"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/newAccount"
         android:name="com.tpow.budgetboi.NewAccount"
         android:label="new_account_fragment"
-        tools:layout="@layout/new_account_fragment" >
+        tools:layout="@layout/new_account_fragment">
         <action
             android:id="@+id/action_newAccount_to_overview"
             app:destination="@id/overview" />
