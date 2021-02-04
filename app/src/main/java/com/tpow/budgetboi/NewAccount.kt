@@ -30,6 +30,4 @@ class NewAccount : Fragment() {
         // TODO: Use the ViewModel
     }
 
-
-
 }
