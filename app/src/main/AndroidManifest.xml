@@ -13,13 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetBoi">
 
-        <activity
-            android:name=".activities.NewAccountActivity"
-            android:label="@string/title_activity_new_account">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

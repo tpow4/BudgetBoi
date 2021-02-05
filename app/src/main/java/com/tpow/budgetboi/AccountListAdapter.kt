@@ -4,33 +4,57 @@ import android.graphics.Rect
 import android.icu.text.NumberFormat
 import android.icu.util.Currency
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.selection.ItemDetailsLookup
+import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
-import java.math.RoundingMode
 
 class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountComparator()) {
+    var tracker: SelectionTracker<Long>? = null
+
+    init {
+        setHasStableIds(true)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountViewHolder {
         return AccountViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder : AccountViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.institution, current.accountName, current.balance)
+        tracker?.let {
+            holder.bind(current.institution, current.accountName, current.balance, it.isSelected(position.toLong()))
+        }
     }
+
+    override fun getItemId(position: Int): Long = position.toLong()
 }
 
-class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+{
+    private val cardView : MaterialCardView = itemView.findViewById(R.id.account_card_view)
     private val institutionTextView : MaterialTextView = itemView.findViewById(R.id.institution_text)
     private val accountTextView : MaterialTextView = itemView.findViewById(R.id.account_text)
     private val balanceTextView : MaterialTextView = itemView.findViewById(R.id.balance_text)
 
-    fun bind(institutionText: String?, accountText : String?, balance: Double?)
+
+    fun bind(institutionText: String?, accountText : String?, balance: Double?, isActivated: Boolean = false)
     {
+        cardView.isActivated = isActivated
+        if (isActivated)
+        {
+            //Todo: add long click behavior here
+            Toast.makeText(itemView.context, "long click detected", Toast.LENGTH_SHORT).show()
+        }
+
         institutionTextView.text = institutionText
         accountTextView.text = accountText
         if (balance == null)
@@ -59,6 +83,13 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
     }
 
+
+    fun getItemDetails(): ItemDetailsLookup.ItemDetails<Long> = object : ItemDetailsLookup.ItemDetails<Long>() {
+        override fun getPosition(): Int = adapterPosition
+        override fun getSelectionKey(): Long = itemId
+    }
+
+
     companion object {
         fun create(parent: ViewGroup) : AccountViewHolder {
             val view : View = LayoutInflater.from(parent.context).inflate(R.layout.account_item, parent, false)
@@ -73,8 +104,21 @@ class AccountComparator : DiffUtil.ItemCallback<Account>() {
     }
 
     override fun areContentsTheSame(oldItem: Account, newItem: Account): Boolean {
-        return oldItem.institution === newItem.institution && oldItem.accountName === newItem.accountName
+        return oldItem.institution == newItem.institution && oldItem.accountName == newItem.accountName
     }
+}
+
+class AccountDetailsLookup(private val recyclerView: RecyclerView) : ItemDetailsLookup<Long>()
+{
+    override fun getItemDetails(event: MotionEvent): ItemDetails<Long>? {
+        val view = recyclerView.findChildViewUnder(event.x, event.y)
+        if (view != null)
+        {
+            return (recyclerView.getChildViewHolder(view) as AccountViewHolder).getItemDetails()
+        }
+        return null
+    }
+
 }
 
 class AccountItemDecoration(private var verticalSpaceHeight: Int) : RecyclerView.ItemDecoration() {
