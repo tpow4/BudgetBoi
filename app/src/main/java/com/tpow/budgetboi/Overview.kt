@@ -1,15 +1,15 @@
 package com.tpow.budgetboi
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.selection.SelectionPredicates
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StableIdKeyProvider
@@ -30,6 +30,35 @@ class Overview : Fragment() {
     private lateinit var viewModel: AccountViewModel
     private lateinit var recyclerView : RecyclerView
     private lateinit var toolbar : MaterialToolbar
+    private var actionMode : ActionMode? = null
+
+    private val actionModeCallback = object : ActionMode.Callback {
+        // Called when the action mode is created; startActionMode() was called
+        override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
+            val inflater: MenuInflater = mode.menuInflater
+            inflater.inflate(R.menu.selected_account_menu, menu)
+            return true
+        }
+
+        override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
+            return false
+        }
+
+        override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
+            return when (item.itemId) {
+                R.id.action_settings -> {
+                    //Todo: button handling
+                    mode.finish() // Action picked, so close the CAB
+                    true
+                }
+                else -> false
+            }
+        }
+
+        override fun onDestroyActionMode(mode: ActionMode) {
+            actionMode = null
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,19 +72,22 @@ class Overview : Fragment() {
         addItemButton.setOnClickListener { view ->
             view.findNavController().navigate(R.id.newAccount)
         }
-
         return fragmentView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         if(args.EntryError)
         {
             Toast.makeText(context, "Bruh, no text was entered", Toast.LENGTH_LONG). show()
         }
 
-
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        toolbar.setupWithNavController(navController, appBarConfiguration)
         toolbar.inflateMenu(R.menu.selected_account_menu)
+        toolbar.title = "Account Overview"
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -91,14 +123,21 @@ class Overview : Fragment() {
                     if (tracker.hasSelection())
                     {
                         val items = tracker.selection.map { adapter.currentList[it.toInt()] }
-                        toolbar.isVisible = items.isNotEmpty()
+                        //toolbar.isVisible = items.isNotEmpty()
 
                         //Todo: error catching needed
-                        toolbar.title = items[0].accountName
+                        //toolbar.title = items[0].accountName
+
+                        if(actionMode == null)
+                        {
+                            actionMode = activity!!.startActionMode(actionModeCallback)
+                        }
+                        actionMode?.title = items[0].accountName
+
                     }
                     else
                     {
-                        toolbar.isVisible = false
+                        //toolbar.isVisible = false
                     }
                 }
             })
