@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.SelectionTracker
@@ -19,6 +18,7 @@ import com.google.android.material.textview.MaterialTextView
 
 class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountComparator()) {
     var tracker: SelectionTracker<Long>? = null
+    var list: List<Account> = arrayListOf()
 
     init {
         setHasStableIds(true)
@@ -36,6 +36,7 @@ class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountCompar
     }
 
     override fun getItemId(position: Int): Long = position.toLong()
+
 }
 
 class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -50,11 +51,6 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         cardView.isSelected = isActivated
         cardView.isChecked = isActivated
-        if (isActivated)
-        {
-            //Todo: add long click behavior here
-            Toast.makeText(itemView.context, "long click detected", Toast.LENGTH_SHORT).show()
-        }
 
         institutionTextView.text = institutionText
         accountTextView.text = accountText
