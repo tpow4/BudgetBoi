@@ -48,7 +48,8 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun bind(institutionText: String?, accountText : String?, balance: Double?, isActivated: Boolean = false)
     {
-        cardView.isActivated = isActivated
+        cardView.isSelected = isActivated
+        cardView.isChecked = isActivated
         if (isActivated)
         {
             //Todo: add long click behavior here
