@@ -49,8 +49,8 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun bind(institutionText: String?, accountText : String?, balance: Double?, isActivated: Boolean = false)
     {
-        cardView.isSelected = isActivated
-        cardView.isChecked = isActivated
+        //cardView.isSelected = isActivated
+        //cardView.isChecked = isActivated
 
         institutionTextView.text = institutionText
         accountTextView.text = accountText
