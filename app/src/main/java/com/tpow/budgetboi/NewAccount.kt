@@ -1,11 +1,11 @@
 package com.tpow.budgetboi
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
@@ -30,7 +30,7 @@ class NewAccount : Fragment() {
 
         editInstitutionView = fragmentView.findViewById(R.id.institutionEditText)
         editAccountView = fragmentView.findViewById(R.id.accountEditText)
-        submissionButton = fragmentView.findViewById<MaterialButton>(R.id.new_account_submit)
+        submissionButton = fragmentView.findViewById(R.id.new_account_submit)
 
         return fragmentView
     }
