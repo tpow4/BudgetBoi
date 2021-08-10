@@ -10,10 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.selection.SelectionPredicates
-import androidx.recyclerview.selection.SelectionTracker
-import androidx.recyclerview.selection.StableIdKeyProvider
-import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
@@ -97,17 +93,17 @@ class Overview : Fragment() {
         val adapter = AccountListAdapter()
         recyclerView.adapter = adapter
 
-        val tracker = SelectionTracker.Builder(
-            "mySelection",
-            recyclerView,
-            StableIdKeyProvider(recyclerView),
-            AccountDetailsLookup(recyclerView),
-            StorageStrategy.createLongStorage()
-        ).withSelectionPredicate(
-            SelectionPredicates.createSelectSingleAnything()
-        ).build()
+//        val tracker = SelectionTracker.Builder(
+//            "mySelection",
+//            recyclerView,
+//            StableIdKeyProvider(recyclerView),
+//            AccountDetailsLookup(recyclerView),
+//            StorageStrategy.createLongStorage()
+//        ).withSelectionPredicate(
+//            SelectionPredicates.createSelectSingleAnything()
+//        ).build()
 
-        adapter.tracker = tracker
+//        adapter.tracker = tracker
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.addItemDecoration(AccountItemDecoration(resources.getDimensionPixelSize(R.dimen.account_vertical_margin)))
@@ -116,31 +112,31 @@ class Overview : Fragment() {
             accounts?.let { adapter.submitList(it) }
         })
 
-        tracker.addObserver(
-            object : SelectionTracker.SelectionObserver<Long>() {
-                override fun onSelectionChanged() {
-                    super.onSelectionChanged()
-                    if (tracker.hasSelection())
-                    {
-                        val items = tracker.selection.map { adapter.currentList[it.toInt()] }
-                        //toolbar.isVisible = items.isNotEmpty()
-
-                        //Todo: error catching needed
-                        //toolbar.title = items[0].accountName
-
-                        if(actionMode == null)
-                        {
-                            actionMode = activity!!.startActionMode(actionModeCallback)
-                        }
-                        actionMode?.title = items[0].accountName
-
-                    }
-                    else
-                    {
-                        //toolbar.isVisible = false
-                    }
-                }
-            })
+//        tracker.addObserver(
+//            object : SelectionTracker.SelectionObserver<Long>() {
+//                override fun onSelectionChanged() {
+//                    super.onSelectionChanged()
+//                    if (tracker.hasSelection())
+//                    {
+//                        val items = tracker.selection.map { adapter.currentList[it.toInt()] }
+//                        //toolbar.isVisible = items.isNotEmpty()
+//
+//                        //Todo: error catching needed
+//                        //toolbar.title = items[0].accountName
+//
+//                        if(actionMode == null)
+//                        {
+//                            actionMode = activity!!.startActionMode(actionModeCallback)
+//                        }
+//                        actionMode?.title = items[0].accountName
+//
+//                    }
+//                    else
+//                    {
+//                        //toolbar.isVisible = false
+//                    }
+//                }
+//            })
     }
 
 

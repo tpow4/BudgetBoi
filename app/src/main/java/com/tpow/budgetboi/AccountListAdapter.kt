@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.DiffUtil
@@ -18,11 +19,6 @@ import com.google.android.material.textview.MaterialTextView
 
 class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountComparator()) {
     var tracker: SelectionTracker<Long>? = null
-    var list: List<Account> = arrayListOf()
-
-    init {
-        setHasStableIds(true)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountViewHolder {
         return AccountViewHolder.create(parent)
@@ -30,8 +26,12 @@ class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountCompar
 
     override fun onBindViewHolder(holder : AccountViewHolder, position: Int) {
         val current = getItem(position)
-        tracker?.let {
-            holder.bind(current.institution, current.accountName, current.balance, it.isSelected(position.toLong()))
+//        tracker?.let {
+//            holder.bind(current.institution, current.accountName, current.balance, it.isSelected(position.toLong()))
+//        }
+        holder.bind(current.institution, current.accountName, current.balance)
+        holder.itemView.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.action_overview_to_editAccount)
         }
     }
 
@@ -46,11 +46,16 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     private val accountTextView : MaterialTextView = itemView.findViewById(R.id.account_text)
     private val balanceTextView : MaterialTextView = itemView.findViewById(R.id.balance_text)
 
+    init {
+        itemView.setOnClickListener {
+            //OnItemClick
+        }
+    }
 
-    fun bind(institutionText: String?, accountText : String?, balance: Double?, isActivated: Boolean = false)
+
+    fun bind(institutionText: String?, accountText : String?, balance: Double?)
+    //, isActivated: Boolean = false)
     {
-        //cardView.isSelected = isActivated
-        //cardView.isChecked = isActivated
 
         institutionTextView.text = institutionText
         accountTextView.text = accountText
