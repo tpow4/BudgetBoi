@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
-
 }
 
 android {
@@ -48,11 +48,19 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navigationVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
-    implementation "androidx.navigation:navigation-compose:1.0.0-alpha06"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha06"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    implementation "androidx.recyclerview:recyclerview-selection:$rootProject.reyclclerSelectionVersion"
 
     testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"
+    testImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"    
+
+    // coroutines for getting off the UI thread
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
 }
