@@ -74,7 +74,7 @@ class Overview : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(args.ErrorEntry)
+        if(args.EntryError)
         {
             Toast.makeText(context, "Bruh, no text was entered", Toast.LENGTH_LONG). show()
         }

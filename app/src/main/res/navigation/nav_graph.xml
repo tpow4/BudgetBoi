@@ -13,13 +13,13 @@
         <action
             android:id="@+id/action_overview_to_newAccount"
             app:destination="@id/newAccount" />
+        <argument
+            android:name="EntryError"
+            app:argType="boolean"
+            android:defaultValue="false" />
         <action
             android:id="@+id/action_overview_to_editAccount"
             app:destination="@id/editAccount" />
-        <argument
-            android:name="ErrorEntry"
-            app:argType="boolean"
-            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/newAccount"
@@ -46,5 +46,14 @@
                 android:name="ErrorEntry"
                 android:defaultValue="false" />
         </action>
+    </fragment>
+    <fragment
+        android:id="@+id/editAccount"
+        android:name="com.tpow.budgetboi.EditAccount"
+        android:label="edit_account_fragment"
+        tools:layout="@layout/edit_account_fragment" >
+        <action
+            android:id="@+id/action_editAccount_to_overview"
+            app:destination="@id/overview" />
     </fragment>
 </navigation>
