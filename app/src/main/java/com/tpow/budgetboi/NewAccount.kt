@@ -50,7 +50,7 @@ class NewAccount : Fragment() {
                 viewModel.insert(Account(0, account, institution, STARTING_BALANCE))
             }
 
-            val action = NewAccountDirections.actionNewAccountToOverview(isError)
+            val action = NewAccountDirections.actionNewAccountToOverview()
             view.findNavController().navigate(action)
         }
     }
