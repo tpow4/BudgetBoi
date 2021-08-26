@@ -20,16 +20,20 @@ import com.google.android.material.textview.MaterialTextView
 class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountComparator()) {
     var tracker: SelectionTracker<Long>? = null
 
+    init {
+        setHasStableIds(true)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountViewHolder {
         return AccountViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder : AccountViewHolder, position: Int) {
         val current = getItem(position)
-//        tracker?.let {
-//            holder.bind(current.institution, current.accountName, current.balance, it.isSelected(position.toLong()))
-//        }
-        holder.bind(current.institution, current.accountName, current.balance)
+        tracker?.let {
+            holder.bind(current.institution, current.accountName, current.balance, it.isSelected(position.toLong()))
+        }
+        //holder.bind(current.institution, current.accountName, current.balance)
         holder.itemView.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_overview_to_editAccount)
         }
@@ -53,10 +57,9 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     }
 
 
-    fun bind(institutionText: String?, accountText : String?, balance: Double?)
-    //, isActivated: Boolean = false)
+    fun bind(institutionText: String?, accountText : String?, balance: Double?, isActivated: Boolean = false)
     {
-
+        cardView.isChecked = isActivated
         institutionTextView.text = institutionText
         accountTextView.text = accountText
         if (balance == null)
