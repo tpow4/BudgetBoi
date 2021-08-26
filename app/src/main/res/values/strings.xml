@@ -6,4 +6,9 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
+    <string name="new_account_title">New Account Menu</string>
+    <string name="new_account_institution">Enter Institution</string>
+    <string name="new_account_type">Enter account type</string>
+    <string name="new_account_submit">Submit</string>
+    <string name="overview_add_button">button to add account</string>
 </resources>
