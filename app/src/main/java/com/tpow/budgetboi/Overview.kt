@@ -1,6 +1,7 @@
 package com.tpow.budgetboi
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -56,6 +57,7 @@ class Overview : Fragment() {
         }
 
         override fun onDestroyActionMode(mode: ActionMode) {
+            (recyclerView.adapter as AccountListAdapter).clearSelection()
             actionMode = null
         }
     }
@@ -123,7 +125,6 @@ class Overview : Fragment() {
                     if (tracker.hasSelection())
                     {
                         val items = tracker.selection.map { adapter.currentList[it.toInt()] }
-
 
                         if(actionMode == null)
                         {

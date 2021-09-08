@@ -33,7 +33,6 @@ class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountCompar
         tracker?.let {
             holder.bind(current.institution, current.accountName, current.balance, it.isSelected(position.toLong()))
         }
-        //holder.bind(current.institution, current.accountName, current.balance)
         holder.itemView.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_overview_to_editAccount)
         }
@@ -41,6 +40,9 @@ class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountCompar
 
     override fun getItemId(position: Int): Long = position.toLong()
 
+    fun clearSelection() {
+        tracker?.clearSelection()
+    }
 }
 
 class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -59,6 +61,7 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun bind(institutionText: String?, accountText : String?, balance: Double?, isActivated: Boolean = false)
     {
+        cardView.isActivated = isActivated
         cardView.isChecked = isActivated
         institutionTextView.text = institutionText
         accountTextView.text = accountText
