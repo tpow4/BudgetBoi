@@ -51,8 +51,7 @@ class NewAccount : Fragment(), LifecycleObserver {
                 viewModel.insert(Account(0, account, institution, startingBalance))
             }
 
-            //Todo: add back safe args
-            val action = NewAccountDirections.actionNewAccountToOverview()
+            val action = NewAccountDirections.actionNewAccountToOverview(isError)
             view.findNavController().navigate(action)
         }
     }

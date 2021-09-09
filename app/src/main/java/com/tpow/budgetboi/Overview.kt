@@ -2,6 +2,7 @@ package com.tpow.budgetboi
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -84,7 +85,9 @@ class Overview : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(), AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository)).get(AccountViewModel::class.java)
+
+        viewModel = ViewModelProvider(requireActivity(),
+            AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository)).get(AccountViewModel::class.java)
 
         val adapter = AccountListAdapter()
         recyclerView.adapter = adapter
@@ -136,5 +139,15 @@ class Overview : Fragment() {
                     }
                 }
             })
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //clears args after displaying warning. Otherwise, it will display after each fragment backs into overview
+        if (OverviewArgs.fromBundle(requireArguments()).entryArg) {
+            Toast.makeText(context, "No text was entered for account creation", Toast.LENGTH_LONG). show()
+        }
+        requireArguments().clear()
     }
 }
