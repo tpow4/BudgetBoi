@@ -33,9 +33,6 @@ class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountCompar
         tracker?.let {
             holder.bind(current.institution, current.accountName, current.balance, it.isSelected(position.toLong()))
         }
-        holder.itemView.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.action_overview_to_editAccount)
-        }
     }
 
     override fun getItemId(position: Int): Long = position.toLong()
@@ -52,17 +49,16 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     private val accountTextView : MaterialTextView = itemView.findViewById(R.id.account_text)
     private val balanceTextView : MaterialTextView = itemView.findViewById(R.id.balance_text)
 
-    init {
-        itemView.setOnClickListener {
-            //OnItemClick
-        }
-    }
 
 
     fun bind(institutionText: String?, accountText : String?, balance: Double?, isActivated: Boolean = false)
     {
+        cardView.setOnClickListener{view ->
+            view.findNavController().navigate(R.id.editAccount)
+        }
         cardView.isActivated = isActivated
         cardView.isChecked = isActivated
+
         institutionTextView.text = institutionText
         accountTextView.text = accountText
         if (balance == null)
@@ -91,12 +87,10 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
         }
     }
 
-
     fun getItemDetails(): ItemDetailsLookup.ItemDetails<Long> = object : ItemDetailsLookup.ItemDetails<Long>() {
         override fun getPosition(): Int = adapterPosition
         override fun getSelectionKey(): Long = itemId
     }
-
 
     companion object {
         fun create(parent: ViewGroup) : AccountViewHolder {

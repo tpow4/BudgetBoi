@@ -40,12 +40,8 @@
         android:label="edit_account_fragment"
         tools:layout="@layout/edit_account_fragment" >
         <action
-            android:id="@+id/action_editAccount_to_overview"
-            app:destination="@id/overview" >
-            <argument
-                android:name="ErrorEntry"
-                android:defaultValue="false" />
-        </action>
+            android:id="@+id/action_editAccount_to_overview2"
+            app:destination="@id/overview" />
     </fragment>
     <fragment
         android:id="@+id/editAccount"

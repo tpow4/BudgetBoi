@@ -2,12 +2,10 @@ package com.tpow.budgetboi
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.selection.SelectionPredicates
@@ -24,8 +22,6 @@ class Overview : Fragment() {
     companion object {
         fun newInstance() = Overview()
     }
-
-    val args: OverviewArgs by navArgs()
 
     private lateinit var viewModel: AccountViewModel
     private lateinit var recyclerView : RecyclerView
@@ -78,11 +74,6 @@ class Overview : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if(args.EntryError)
-        {
-            Toast.makeText(context, "Bruh, no text was entered", Toast.LENGTH_LONG). show()
-        }
 
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -146,6 +137,4 @@ class Overview : Fragment() {
                 }
             })
     }
-
-
 }
