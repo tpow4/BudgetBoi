@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">BudgetBoi</string>
+    <string name="title_activity_new_account">NewAccountActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="new_account_title">New Account Menu</string>
+    <string name="new_account_institution">Enter Institution</string>
+    <string name="new_account_type">Enter account type</string>
+    <string name="new_account_submit">Submit</string>
+    <string name="overview_add_button">button to add account</string>
 </resources>
