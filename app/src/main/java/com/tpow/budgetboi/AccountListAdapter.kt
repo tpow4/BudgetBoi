@@ -49,8 +49,6 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     private val accountTextView : MaterialTextView = itemView.findViewById(R.id.account_text)
     private val balanceTextView : MaterialTextView = itemView.findViewById(R.id.balance_text)
 
-
-
     fun bind(institutionText: String?, accountText : String?, balance: Double?, isActivated: Boolean = false)
     {
         cardView.setOnClickListener{view ->
@@ -88,7 +86,7 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     }
 
     fun getItemDetails(): ItemDetailsLookup.ItemDetails<Long> = object : ItemDetailsLookup.ItemDetails<Long>() {
-        override fun getPosition(): Int = adapterPosition
+        override fun getPosition(): Int = bindingAdapterPosition
         override fun getSelectionKey(): Long = itemId
     }
 
@@ -100,7 +98,8 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     }
 }
 
-class AccountComparator : DiffUtil.ItemCallback<Account>() {
+class AccountComparator : DiffUtil.ItemCallback<Account>()
+{
     override fun areItemsTheSame(oldItem: Account, newItem: Account): Boolean {
         return oldItem === newItem
     }
@@ -120,11 +119,10 @@ class AccountDetailsLookup(private val recyclerView: RecyclerView) : ItemDetails
         }
         return null
     }
-
 }
 
-class AccountItemDecoration(private var verticalSpaceHeight: Int) : RecyclerView.ItemDecoration() {
-
+class AccountItemDecoration(private var verticalSpaceHeight: Int) : RecyclerView.ItemDecoration()
+{
     override fun getItemOffsets(
         outRect: Rect,
         view: View,

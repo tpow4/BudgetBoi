@@ -1,17 +1,18 @@
 package com.tpow.budgetboi
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 
-class NewAccount : Fragment(), LifecycleObserver {
+class NewAccount : DialogFragment(), LifecycleObserver {
 
     companion object {
         fun newInstance() = NewAccount()
@@ -38,7 +39,7 @@ class NewAccount : Fragment(), LifecycleObserver {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(), AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository)).get(AccountViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity(), AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
         submissionButton.setOnClickListener { view ->
             var isError = false
             if (editInstitutionView.text.isBlank() || editAccountView.text.isBlank()) {
@@ -53,6 +54,19 @@ class NewAccount : Fragment(), LifecycleObserver {
 
             val action = NewAccountDirections.actionNewAccountToOverview(isError)
             view.findNavController().navigate(action)
+
         }
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        return dialog
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setStyle(STYLE_NO_TITLE, R.style.ThemeOverlay_MaterialComponents)
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        super.onCreate(savedInstanceState)
     }
 }

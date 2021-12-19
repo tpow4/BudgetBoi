@@ -2,9 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.MaterialComponents"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewAccount">
+    tools:context=".NewAccount"
+    android:padding="24dp">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/newAccountTitleText"
@@ -19,18 +21,20 @@
         android:id="@+id/institutionEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/new_account_institution"
         android:inputType="text"
         android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/newAccountTitleText"
+        app:layout_constraintStart_toStartOf="@+id/newAccountTitleText"
         app:layout_constraintTop_toBottomOf="@+id/newAccountTitleText" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/accountEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/new_account_type"
         android:inputType="textPersonName"
@@ -42,6 +46,7 @@
         android:id="@+id/new_account_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/new_account_submit"
         app:layout_constraintEnd_toEndOf="@+id/accountEditText"
         app:layout_constraintStart_toStartOf="@+id/accountEditText"

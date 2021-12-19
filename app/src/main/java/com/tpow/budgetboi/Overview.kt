@@ -5,7 +5,6 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -66,9 +65,12 @@ class Overview : Fragment() {
         recyclerView = fragmentView.findViewById(R.id.recyclerView)
         toolbar = fragmentView.findViewById(R.id.materialToolbar)
 
+
+
         val addItemButton = fragmentView.findViewById<FloatingActionButton>(R.id.floatingActionButton)
         addItemButton.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.newAccount)
+//            view.findNavController().navigate(R.id.newAccount)
+            NewAccount().show(childFragmentManager, "NewAccountFragment")
         }
         return fragmentView
     }

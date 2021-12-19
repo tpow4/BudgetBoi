@@ -47,10 +47,16 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navigationVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "androidx.navigation:navigation-compose:$rootProject.navigationComposeVersion"
+
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    kapt  "androidx.room:room-compiler:$rootProject.roomVersion"
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+
     implementation "androidx.recyclerview:recyclerview-selection:$rootProject.reyclclerSelectionVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.reyclclerWidgetVersion"
+
+    implementation "net.zetetic:android-database-sqlcipher:4.5.0"
+    implementation "androidx.sqlite:sqlite-ktx:2.2.0"
 
     // testing frameworks
     testImplementation 'junit:junit:4.13.2'
@@ -60,6 +66,6 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"    
 
     // coroutines for getting off the UI thread
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
 }
