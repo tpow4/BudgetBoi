@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/overview"
         android:name="com.tpow.budgetboi.Overview"
-        android:label="overview_fragment"
+        android:label="@string/overview_title"
         tools:layout="@layout/overview_fragment">
         <action
             android:id="@+id/action_overview_to_newAccount"
@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/newAccount"
         android:name="com.tpow.budgetboi.NewAccount"
-        android:label="new_account_fragment"
+        android:label="@string/overview_title"
         tools:layout="@layout/new_account_fragment">
         <action
             android:id="@+id/action_newAccount_to_overview"

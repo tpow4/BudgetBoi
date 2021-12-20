@@ -11,4 +11,5 @@
     <string name="new_account_type">Enter account type</string>
     <string name="new_account_submit">Submit</string>
     <string name="overview_add_button">button to add account</string>
+    <string name="overview_title">Account Overview</string>
 </resources>

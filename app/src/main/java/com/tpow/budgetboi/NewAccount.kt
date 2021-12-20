@@ -10,6 +10,10 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 
 class NewAccount : DialogFragment(), LifecycleObserver {
@@ -18,6 +22,7 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         fun newInstance() = NewAccount()
     }
 
+    private lateinit var toolbar : MaterialToolbar
     private lateinit var viewModel: AccountViewModel
     private lateinit var editInstitutionView: EditText
     private lateinit var editAccountView: EditText
@@ -29,7 +34,7 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         savedInstanceState: Bundle?
     ): View? {
         val fragmentView = inflater.inflate(R.layout.new_account_fragment, container, false)
-
+        toolbar = fragmentView.findViewById(R.id.toolbar)
         editInstitutionView = fragmentView.findViewById(R.id.institutionEditText)
         editAccountView = fragmentView.findViewById(R.id.accountEditText)
         submissionButton = fragmentView.findViewById(R.id.new_account_submit)
@@ -68,5 +73,12 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         setStyle(STYLE_NO_TITLE, R.style.ThemeOverlay_MaterialComponents)
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 }

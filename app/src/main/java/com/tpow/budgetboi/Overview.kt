@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -63,14 +64,12 @@ class Overview : Fragment() {
     ): View? {
         val fragmentView = inflater.inflate(R.layout.overview_fragment, container, false)
         recyclerView = fragmentView.findViewById(R.id.recyclerView)
-        toolbar = fragmentView.findViewById(R.id.materialToolbar)
-
-
+        toolbar = fragmentView.findViewById(R.id.toolbar)
 
         val addItemButton = fragmentView.findViewById<FloatingActionButton>(R.id.floatingActionButton)
         addItemButton.setOnClickListener { view ->
-//            view.findNavController().navigate(R.id.newAccount)
-            NewAccount().show(childFragmentManager, "NewAccountFragment")
+            view.findNavController().navigate(R.id.newAccount)
+//            NewAccount().show(childFragmentManager, "NewAccountFragment")
         }
         return fragmentView
     }
@@ -82,7 +81,6 @@ class Overview : Fragment() {
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
         toolbar.inflateMenu(R.menu.selected_account_menu)
-        toolbar.title = "Account Overview"
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
