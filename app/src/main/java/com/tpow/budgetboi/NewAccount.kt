@@ -59,7 +59,6 @@ class NewAccount : DialogFragment(), LifecycleObserver {
 
             val action = NewAccountDirections.actionNewAccountToOverview(isError)
             view.findNavController().navigate(action)
-
         }
     }
 

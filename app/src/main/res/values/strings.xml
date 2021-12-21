@@ -12,4 +12,6 @@
     <string name="new_account_submit">Submit</string>
     <string name="overview_add_button">button to add account</string>
     <string name="overview_title">Account Overview</string>
+    <string name="edit_account_title">Edit Account</string>
+    <string name="new_account_save">save</string>
 </resources>

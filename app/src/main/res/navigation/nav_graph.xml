@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/editAccount"
         android:name="com.tpow.budgetboi.EditAccount"
-        android:label="edit_account_fragment"
+        android:label="@string/edit_account_title"
         tools:layout="@layout/edit_account_fragment" >
         <action
             android:id="@+id/action_editAccount_to_overview"
