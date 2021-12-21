@@ -27,7 +27,6 @@ class EditAccount : Fragment() {
         return fragmentView
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()

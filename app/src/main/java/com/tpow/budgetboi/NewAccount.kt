@@ -2,19 +2,15 @@ package com.tpow.budgetboi
 
 import android.app.Dialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.button.MaterialButton
 
 class NewAccount : DialogFragment(), LifecycleObserver {
 
@@ -22,12 +18,12 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         fun newInstance() = NewAccount()
     }
 
+    private val startingBalance = 0.0
+
     private lateinit var toolbar : MaterialToolbar
     private lateinit var viewModel: AccountViewModel
     private lateinit var editInstitutionView: EditText
     private lateinit var editAccountView: EditText
-    private lateinit var submissionButton : MaterialButton
-    private val startingBalance = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,29 +33,12 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         toolbar = fragmentView.findViewById(R.id.toolbar)
         editInstitutionView = fragmentView.findViewById(R.id.institutionEditText)
         editAccountView = fragmentView.findViewById(R.id.accountEditText)
-        submissionButton = fragmentView.findViewById(R.id.new_account_submit)
-
         return fragmentView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity(), AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
-        submissionButton.setOnClickListener { view ->
-            var isError = false
-            if (editInstitutionView.text.isBlank() || editAccountView.text.isBlank()) {
-                isError = true
-            }
-            else
-            {
-                val institution = editInstitutionView.text.toString()
-                val account = editAccountView.text.toString()
-                viewModel.insert(Account(0, account, institution, startingBalance))
-            }
-
-            val action = NewAccountDirections.actionNewAccountToOverview(isError)
-            view.findNavController().navigate(action)
-        }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -79,5 +58,26 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_save -> {
+                    var isError = false
+                    if (editInstitutionView.text.isBlank() || editAccountView.text.isBlank()) {
+                        isError = true
+                    }
+                    else
+                    {
+                        val institution = editInstitutionView.text.toString()
+                        val account = editAccountView.text.toString()
+                        viewModel.insert(Account(0, account, institution, startingBalance))
+                    }
+
+                    val action = NewAccountDirections.actionNewAccountToOverview(isError)
+                    findNavController().navigate(action)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
