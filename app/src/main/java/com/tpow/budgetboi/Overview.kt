@@ -80,7 +80,7 @@ class Overview : Fragment() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
-        toolbar.inflateMenu(R.menu.overview_menu)
+        //toolbar.inflateMenu()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

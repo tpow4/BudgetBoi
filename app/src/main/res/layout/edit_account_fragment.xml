@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:liftOnScroll="true"
-            app:menu="@menu/new_account_menu"
+            app:menu="@menu/edit_account_menu"
             app:title="@string/edit_account_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
