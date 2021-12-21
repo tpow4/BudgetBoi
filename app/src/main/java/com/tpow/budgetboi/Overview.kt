@@ -80,14 +80,14 @@ class Overview : Fragment() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
-        toolbar.inflateMenu(R.menu.selected_account_menu)
+        toolbar.inflateMenu(R.menu.overview_menu)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProvider(requireActivity(),
-            AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository)).get(AccountViewModel::class.java)
+            AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
 
         val adapter = AccountListAdapter()
         recyclerView.adapter = adapter
