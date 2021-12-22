@@ -21,7 +21,7 @@
             app:argType="boolean"
             android:defaultValue="false" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/newAccount"
         android:name="com.tpow.budgetboi.NewAccount"
         android:label="@string/overview_title"
@@ -29,7 +29,7 @@
         <action
             android:id="@+id/action_newAccount_to_overview"
             app:destination="@id/overview" />
-    </fragment>
+    </dialog>
     <fragment
         android:id="@+id/editAccount"
         android:name="com.tpow.budgetboi.EditAccount"

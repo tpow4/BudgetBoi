@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/new_account_menu"
-            app:liftOnScroll="true"/>
+            app:liftOnScroll="true"
+            app:navigationIcon="@drawable/ic_baseline_close_24"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputEditText
