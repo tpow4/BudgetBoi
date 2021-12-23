@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.textfield.TextInputLayout
 
 class NewAccount : DialogFragment(), LifecycleObserver {
 
@@ -21,8 +22,10 @@ class NewAccount : DialogFragment(), LifecycleObserver {
 
     private lateinit var toolbar : MaterialToolbar
     private lateinit var viewModel: AccountViewModel
-    private lateinit var editInstitutionView: EditText
-    private lateinit var editAccountView: EditText
+    private lateinit var editInstitutionLayout : TextInputLayout
+    private lateinit var editInstitutionText: EditText
+    private lateinit var editAccountLayout : TextInputLayout
+    private lateinit var editAccountText: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +33,10 @@ class NewAccount : DialogFragment(), LifecycleObserver {
     ): View? {
         val fragmentView = inflater.inflate(R.layout.new_account_fragment, container, false)
         toolbar = fragmentView.findViewById(R.id.toolbar)
-        editInstitutionView = fragmentView.findViewById(R.id.institutionEditText)
-        editAccountView = fragmentView.findViewById(R.id.accountEditText)
+        editInstitutionText = fragmentView.findViewById(R.id.institutionEditText)
+        editAccountText = fragmentView.findViewById(R.id.accountEditText)
+        editInstitutionLayout = fragmentView.findViewById(R.id.institutionEditLayout)
+        editAccountLayout = fragmentView.findViewById(R.id.accountEditLayout)
         return fragmentView
     }
 
@@ -54,20 +59,17 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_save -> {
-                    
-                    var isError = false
-                    if (editInstitutionView.text.isBlank() || editAccountView.text.isBlank()) {
-                        isError = true
+                    if (editInstitutionText.text.isBlank() || editAccountText.text.isBlank()) {
+                        editInstitutionLayout.error = getString(R.string.new_account_error)
+                        editAccountLayout.error = getString(R.string.new_account_error)
                     }
                     else
                     {
-                        val institution = editInstitutionView.text.toString()
-                        val account = editAccountView.text.toString()
+                        val institution = editInstitutionText.text.toString()
+                        val account = editAccountText.text.toString()
                         viewModel.insert(Account(0, account, institution, startingBalance))
+                        findNavController().navigateUp()
                     }
-
-                    val action = NewAccountDirections.actionNewAccountToOverview(isError)
-                    findNavController().navigate(action)
                     true
                 }
                 else -> false

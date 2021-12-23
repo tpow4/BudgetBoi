@@ -16,10 +16,6 @@
         <action
             android:id="@+id/action_overview_to_editAccount"
             app:destination="@id/editAccount" />
-        <argument
-            android:name="entryArg"
-            app:argType="boolean"
-            android:defaultValue="false" />
     </fragment>
     <dialog
         android:id="@+id/newAccount"

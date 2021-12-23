@@ -23,10 +23,24 @@
             app:title="@string/new_account_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/institutionImage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/institutionEditLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/institutionEditLayout"
+        app:srcCompat="@drawable/ic_baseline_account_balance_24" />
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/institutionLayout"
+        android:id="@+id/institutionEditLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:helperText="@string/institution_helper"
+        android:hint="@string/new_account_institution"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -39,43 +53,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/new_account_institution"
             android:inputType="text"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/accountEditLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:helperTextEnabled="true"
-        app:helperText="E.g. Savings, Checking, etc."
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/newAccountImage"
-        app:layout_constraintTop_toBottomOf="@+id/institutionLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/accountEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/new_account_type"
-            android:inputType="textPersonName"
-            android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/institutionImage"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/institutionLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/institutionLayout"
-        app:srcCompat="@drawable/ic_baseline_account_balance_24" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/newAccountImage"
@@ -86,6 +66,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/accountEditLayout"
         app:srcCompat="@drawable/ic_baseline_account_box_24" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/accountEditLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:helperText="@string/new_account_helper"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/newAccountImage"
+        app:layout_constraintTop_toBottomOf="@+id/institutionEditLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/accountEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/new_account_type"
+            android:inputType="text"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/descriptionImage"

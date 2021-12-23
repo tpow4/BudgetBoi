@@ -15,4 +15,14 @@
     <string name="edit_account_title">Edit Account</string>
     <string name="new_account_save">save</string>
     <string name="account_description">Description</string>
+
+    <string name="new_account_confirm_title">Test Title</string>
+    <string name="new_account_confirm_message">Test message</string>
+    <string name="new_account_confirm_accept">Accept</string>
+    <string name="new_account_confirm_decline">Decline</string>
+    <string name="new_account_confirm_cancel">Cancel</string>
+    <string name="new_account_error">Field required</string>
+    <string name="institution_helper">E.g. Chase, Vanguard</string>
+    <string name="new_account_helper">E.g. Savings, Checking, etc.</string>
+
 </resources>
