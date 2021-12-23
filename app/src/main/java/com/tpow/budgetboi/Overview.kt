@@ -15,6 +15,7 @@ import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Overview : Fragment() {
@@ -27,35 +28,6 @@ class Overview : Fragment() {
     private lateinit var recyclerView : RecyclerView
     private lateinit var toolbar : MaterialToolbar
     private var actionMode : ActionMode? = null
-
-    private val actionModeCallback = object : ActionMode.Callback {
-        // Called when the action mode is created; startActionMode() was called
-        override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
-            val inflater: MenuInflater = mode.menuInflater
-            inflater.inflate(R.menu.selected_account_menu, menu)
-            return true
-        }
-
-        override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
-            return false
-        }
-
-        override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-            return when (item.itemId) {
-                R.id.action_settings -> {
-                    //Todo: button handling
-                    mode.finish() // Action picked, so close the CAB
-                    true
-                }
-                else -> false
-            }
-        }
-
-        override fun onDestroyActionMode(mode: ActionMode) {
-            (recyclerView.adapter as AccountListAdapter).clearSelection()
-            actionMode = null
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -108,6 +80,45 @@ class Overview : Fragment() {
         viewModel.allAccounts.observe(viewLifecycleOwner, { accounts ->
             accounts?.let { adapter.submitList(it) }
         })
+
+        val actionModeCallback = object : ActionMode.Callback {
+            // Called when the action mode is created; startActionMode() was called
+            override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
+                val inflater: MenuInflater = mode.menuInflater
+                inflater.inflate(R.menu.selected_account_menu, menu)
+                return true
+            }
+
+            override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
+                return false
+            }
+
+            override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
+                return when (item.itemId) {
+                    R.id.delete_account -> {
+                        //selection tracker needs to be accessed at this scope for some reason
+                        val items = tracker.selection.map { adapter.currentList[it.toInt()] }
+                        MaterialAlertDialogBuilder(requireActivity())
+                            .setMessage(resources.getString(R.string.delete_account_modal_message))
+                            .setNeutralButton(resources.getString(R.string.delete_account_modal_cancel)) { dialog, which ->
+                                // Respond to neutral button press
+                            }
+                            .setPositiveButton(resources.getString(R.string.delete_account_modal_accept)) { dialog, which ->
+                                // Respond to positive button press
+                                viewModel.deleteAccounts(items)
+                            }.show()
+                        mode.finish() // Action picked, so close the CAB
+                        true
+                    }
+                    else -> false
+                }
+            }
+
+            override fun onDestroyActionMode(mode: ActionMode) {
+                (recyclerView.adapter as AccountListAdapter).clearSelection()
+                actionMode = null
+            }
+        }
 
         tracker.addObserver(
             object : SelectionTracker.SelectionObserver<Long>() {

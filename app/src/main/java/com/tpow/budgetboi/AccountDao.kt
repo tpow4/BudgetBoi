@@ -22,4 +22,7 @@ interface AccountDao {
 
     @Delete
     suspend fun delete(account:Account)
+
+    @Delete
+    suspend fun deleteAll(accounts: List<Account>)
 }
