@@ -31,7 +31,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+        app:layout_constraintStart_toEndOf="@+id/institutionImage"
         app:layout_constraintTop_toBottomOf="@+id/new_account_toolbar_layout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -48,11 +48,13 @@
         android:id="@+id/accountEditLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:helperTextEnabled="true"
+        app:helperText="E.g. Savings, Checking, etc."
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/appCompatImageView2"
+        app:layout_constraintStart_toEndOf="@+id/newAccountImage"
         app:layout_constraintTop_toBottomOf="@+id/institutionLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -66,7 +68,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
+        android:id="@+id/institutionImage"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
@@ -76,7 +78,7 @@
         app:srcCompat="@drawable/ic_baseline_account_balance_24" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView2"
+        android:id="@+id/newAccountImage"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
@@ -84,5 +86,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/accountEditLayout"
         app:srcCompat="@drawable/ic_baseline_account_box_24" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/descriptionImage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/descriptionEditLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/descriptionEditLayout"
+        app:srcCompat="@drawable/ic_baseline_short_text_24" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descriptionEditLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/account_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/descriptionImage"
+        app:layout_constraintTop_toBottomOf="@+id/accountEditLayout" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

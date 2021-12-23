@@ -1,6 +1,5 @@
 package com.tpow.budgetboi
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.*
 import android.widget.EditText
@@ -41,12 +40,6 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         viewModel = ViewModelProvider(requireActivity(), AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = super.onCreateDialog(savedInstanceState)
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        return dialog
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setStyle(STYLE_NO_TITLE, R.style.ThemeOverlay_MaterialComponents)
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
@@ -61,6 +54,7 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_save -> {
+                    
                     var isError = false
                     if (editInstitutionView.text.isBlank() || editAccountView.text.isBlank()) {
                         isError = true
