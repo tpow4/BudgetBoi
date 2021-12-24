@@ -73,7 +73,7 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
                     balanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.negativeRed))
                 }
                 else -> {
-                    balanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.design_default_color_on_primary))
+                    balanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.material_on_surface_emphasis_high_type))
                 }
             }
 
@@ -105,7 +105,7 @@ class AccountComparator : DiffUtil.ItemCallback<Account>()
     }
 
     override fun areContentsTheSame(oldItem: Account, newItem: Account): Boolean {
-        return oldItem.institution == newItem.institution && oldItem.accountName == newItem.accountName
+        return oldItem.uid == newItem.uid
     }
 }
 
