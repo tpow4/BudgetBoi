@@ -26,6 +26,8 @@ class NewAccount : DialogFragment(), LifecycleObserver {
     private lateinit var editInstitutionText: EditText
     private lateinit var editAccountLayout : TextInputLayout
     private lateinit var editAccountText: EditText
+    private lateinit var editDescriptionLayout: TextInputLayout
+    private lateinit var editDescriptionText: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,8 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         editAccountText = fragmentView.findViewById(R.id.accountEditText)
         editInstitutionLayout = fragmentView.findViewById(R.id.institutionEditLayout)
         editAccountLayout = fragmentView.findViewById(R.id.accountEditLayout)
+        editDescriptionLayout = fragmentView.findViewById(R.id.descriptionEditLayout)
+        editDescriptionText = fragmentView.findViewById(R.id.descriptionEditText)
         return fragmentView
     }
 
@@ -67,7 +71,7 @@ class NewAccount : DialogFragment(), LifecycleObserver {
                     {
                         val institution = editInstitutionText.text.toString()
                         val account = editAccountText.text.toString()
-                        viewModel.insert(Account(0, account, institution, startingBalance))
+                        viewModel.insert(Account(0, account, institution, editDescriptionText.text.toString(),startingBalance))
                         findNavController().navigateUp()
                     }
                     true

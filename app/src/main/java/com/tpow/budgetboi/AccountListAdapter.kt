@@ -105,7 +105,8 @@ class AccountComparator : DiffUtil.ItemCallback<Account>()
     }
 
     override fun areContentsTheSame(oldItem: Account, newItem: Account): Boolean {
-        return oldItem.uid == newItem.uid
+        return oldItem.institution == newItem.institution && oldItem.accountName == newItem.accountName
+                && oldItem.description == newItem.description
     }
 }
 
