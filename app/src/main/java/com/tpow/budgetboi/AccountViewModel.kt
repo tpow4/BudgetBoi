@@ -21,6 +21,7 @@ class AccountViewModelFactory(private val repository: AccountRepository) : ViewM
             @Suppress("UNCHECKED_CAST")
             return AccountViewModel(repository) as T
         }
+
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
