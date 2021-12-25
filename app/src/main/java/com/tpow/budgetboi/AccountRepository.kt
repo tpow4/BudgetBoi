@@ -11,4 +11,10 @@ class AccountRepository(private val accountDao: AccountDao) {
     suspend fun insert(account: Account){
         accountDao.insert(account)
     }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteAccounts(accounts: List<Account>){
+        accountDao.deleteAll(accounts)
+    }
 }

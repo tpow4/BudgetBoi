@@ -6,45 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".NewAccount">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/newAccountTitleText"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/new_account_toolbar_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/new_account_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fitsSystemWindows="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_close_24">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/institutionEditText"
-        android:layout_width="wrap_content"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:liftOnScroll="true"
+            app:menu="@menu/new_account_menu"
+            app:title="@string/new_account_title" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/institutionImage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/institutionEditLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/institutionEditLayout"
+        app:srcCompat="@drawable/ic_baseline_account_balance_24" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/institutionEditLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:helperText="@string/institution_helper"
         android:hint="@string/new_account_institution"
-        android:inputType="text"
-        android:singleLine="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/institutionImage"
+        app:layout_constraintTop_toBottomOf="@+id/new_account_toolbar_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/institutionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/newAccountImage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/accountEditLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newAccountTitleText" />
+        app:layout_constraintTop_toTopOf="@+id/accountEditLayout"
+        app:srcCompat="@drawable/ic_baseline_account_box_24" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/accountEditText"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/accountEditLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/new_account_type"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/institutionEditText"
-        app:layout_constraintStart_toStartOf="@+id/institutionEditText"
-        app:layout_constraintTop_toBottomOf="@+id/institutionEditText" />
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:helperText="@string/new_account_helper"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/newAccountImage"
+        app:layout_constraintTop_toBottomOf="@+id/institutionEditLayout">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/new_account_submit"
-        android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/accountEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/new_account_type"
+            android:inputType="text"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/descriptionImage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/descriptionEditLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/descriptionEditLayout"
+        app:srcCompat="@drawable/ic_baseline_short_text_24" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descriptionEditLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/new_account_submit"
-        app:layout_constraintEnd_toEndOf="@+id/accountEditText"
-        app:layout_constraintStart_toStartOf="@+id/accountEditText"
-        app:layout_constraintTop_toBottomOf="@+id/accountEditText" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/account_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/descriptionImage"
+        app:layout_constraintTop_toBottomOf="@+id/accountEditLayout" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
