@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.tpow.budgetboi"
-        minSdkVersion 28
+        minSdkVersion 31
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -66,6 +66,6 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"    
 
     // coroutines for getting off the UI thread
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt'
 }
