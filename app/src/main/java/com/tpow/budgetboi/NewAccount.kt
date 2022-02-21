@@ -1,7 +1,9 @@
 package com.tpow.budgetboi
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.LifecycleObserver
@@ -50,7 +52,7 @@ class NewAccount : DialogFragment(), LifecycleObserver {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setStyle(STYLE_NO_TITLE, R.style.ThemeOverlay_MaterialComponents)
+        setStyle(STYLE_NO_TITLE, com.google.android.material.R.style.ThemeOverlay_MaterialComponents)
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         super.onCreate(savedInstanceState)
     }

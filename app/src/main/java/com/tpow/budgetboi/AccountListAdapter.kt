@@ -73,7 +73,7 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
                     balanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.negativeRed))
                 }
                 else -> {
-                    balanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.material_on_surface_emphasis_high_type))
+                    balanceTextView.setTextColor(ContextCompat.getColor(itemView.context, com.google.android.material.R.color.material_on_surface_emphasis_high_type))
                 }
             }
 
