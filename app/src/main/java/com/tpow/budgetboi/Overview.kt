@@ -77,9 +77,9 @@ class Overview : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.addItemDecoration(AccountItemDecoration(resources.getDimensionPixelSize(R.dimen.account_vertical_margin)))
 
-        viewModel.allAccounts.observe(viewLifecycleOwner, { accounts ->
+        viewModel.allAccounts.observe(viewLifecycleOwner) { accounts ->
             accounts?.let { adapter.submitList(it) }
-        })
+        }
 
         val actionModeCallback = object : ActionMode.Callback {
             // Called when the action mode is created; startActionMode() was called
@@ -106,8 +106,8 @@ class Overview : Fragment() {
                             .setPositiveButton(resources.getString(R.string.delete_account_modal_accept)) { dialog, which ->
                                 // Respond to positive button press
                                 viewModel.deleteAccounts(items)
+                                mode.finish() // Action picked, so close the CAB
                             }.show()
-                        mode.finish() // Action picked, so close the CAB
                         true
                     }
                     else -> false

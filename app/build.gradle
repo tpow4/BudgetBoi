@@ -55,7 +55,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview-selection:$rootProject.reyclclerSelectionVersion"
     implementation "androidx.recyclerview:recyclerview:$rootProject.reyclclerWidgetVersion"
 
-    implementation "net.zetetic:android-database-sqlcipher:4.5.0"
+    implementation 'net.zetetic:android-database-sqlcipher:4.5.1'
     implementation "androidx.sqlite:sqlite-ktx:2.2.0"
 
     // testing frameworks

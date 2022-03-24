@@ -1,21 +1,21 @@
 package com.tpow.budgetboi
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 
-class EditAccount : Fragment() {
+class ViewAccount : Fragment() {
 
     private lateinit var toolbar : MaterialToolbar
 
     companion object {
-        fun newInstance() = EditAccount()
+        fun newInstance() = ViewAccount()
     }
 
     override fun onCreateView(
