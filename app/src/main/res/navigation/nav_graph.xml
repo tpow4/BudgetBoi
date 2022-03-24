@@ -28,7 +28,7 @@
     </dialog>
     <fragment
         android:id="@+id/editAccount"
-        android:name="com.tpow.budgetboi.EditAccount"
+        android:name="com.tpow.budgetboi.ViewAccount"
         android:label="@string/edit_account_title"
         tools:layout="@layout/edit_account_fragment" >
         <action
