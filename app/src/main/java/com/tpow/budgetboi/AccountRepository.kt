@@ -17,4 +17,10 @@ class AccountRepository(private val accountDao: AccountDao) {
     suspend fun deleteAccounts(accounts: List<Account>){
         accountDao.deleteAll(accounts)
     }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun getAccountsById(ids: IntArray): Flow<List<Account>> {
+        return accountDao.loadAllByIds(ids)
+    }
 }

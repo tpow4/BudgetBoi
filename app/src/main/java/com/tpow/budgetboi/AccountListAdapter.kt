@@ -31,7 +31,7 @@ class AccountListAdapter : ListAdapter<Account, AccountViewHolder>(AccountCompar
     override fun onBindViewHolder(holder : AccountViewHolder, position: Int) {
         val current = getItem(position)
         tracker?.let {
-            holder.bind(current.institution, current.accountName, current.balance, it.isSelected(position.toLong()))
+            holder.bind(current.institution, current.uid, current.accountName, current.balance, it.isSelected(position.toLong()))
         }
     }
 
@@ -49,10 +49,11 @@ class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     private val accountTextView : MaterialTextView = itemView.findViewById(R.id.account_text)
     private val balanceTextView : MaterialTextView = itemView.findViewById(R.id.balance_text)
 
-    fun bind(institutionText: String?, accountText : String?, balance: Double?, isActivated: Boolean = false)
+    fun bind(institutionText: String?, accountId: Int, accountText : String?, balance: Double?, isActivated: Boolean = false)
     {
         cardView.setOnClickListener{view ->
-            view.findNavController().navigate(R.id.editAccount)
+            val action = OverviewDirections.actionOverviewToViewAccount(accountId)
+            view.findNavController().navigate(action)
         }
         cardView.isActivated = isActivated
         cardView.isChecked = isActivated

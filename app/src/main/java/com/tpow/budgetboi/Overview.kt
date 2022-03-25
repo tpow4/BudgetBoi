@@ -84,8 +84,6 @@ class Overview : Fragment() {
         val actionModeCallback = object : ActionMode.Callback {
             // Called when the action mode is created; startActionMode() was called
             override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
-                val inflater: MenuInflater = mode.menuInflater
-                inflater.inflate(R.menu.selected_account_menu, menu)
                 return true
             }
 
@@ -135,11 +133,11 @@ class Overview : Fragment() {
 
                         if(items.size == 1)
                         {
-                            actionMode?.title = items[0].accountName
+                            actionMode?.title = items.first().accountName
                         }
                         else
                         {
-                            actionMode?.title = items.size.toString() + " accounts"
+                            actionMode?.title = "${items.size} accounts"
                         }
                     }
                     else

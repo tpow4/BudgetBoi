@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 
 class ViewAccount : Fragment() {
 
+    private val args: ViewAccountArgs by navArgs()
     private lateinit var toolbar : MaterialToolbar
 
     companion object {
@@ -22,7 +24,7 @@ class ViewAccount : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentView = inflater.inflate(R.layout.edit_account_fragment, container, false)
+        val fragmentView = inflater.inflate(R.layout.view_account_fragment, container, false)
         toolbar = fragmentView.findViewById(R.id.toolbar)
         return fragmentView
     }
@@ -32,5 +34,6 @@ class ViewAccount : Fragment() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
+        toolbar.title = args.accountId.toString()
     }
 }
