@@ -1,7 +1,6 @@
 package com.tpow.budgetboi
 
 import androidx.lifecycle.*
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class AccountViewModel(private val repository: AccountRepository) : ViewModel() {
@@ -13,10 +12,6 @@ class AccountViewModel(private val repository: AccountRepository) : ViewModel() 
 
     fun deleteAccounts(accounts: List<Account>) = viewModelScope.launch {
         repository.deleteAccounts(accounts)
-    }
-
-    suspend fun getAccountById(id: Int) : Account {
-        return repository.getAccountsById(intArrayOf(id)).first().first()
     }
 }
 

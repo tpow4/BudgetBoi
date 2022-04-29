@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
+    id 'com.google.devtools.ksp' version "$ksp_version"
     id 'androidx.navigation.safeargs.kotlin'
 }
 
@@ -49,7 +49,7 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$rootProject.navigationComposeVersion"
 
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
-    kapt  "androidx.room:room-compiler:$rootProject.roomVersion"
+    ksp "androidx.room:room-compiler:$rootProject.roomVersion"
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
 
     implementation "androidx.recyclerview:recyclerview-selection:$rootProject.reyclclerSelectionVersion"
