@@ -66,6 +66,6 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"    
 
     // coroutines for getting off the UI thread
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1-native-mt'
 }
