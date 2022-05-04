@@ -23,13 +23,13 @@ class NewAccount : DialogFragment(), LifecycleObserver {
     private val startingBalance = 0.0
 
     private lateinit var toolbar : MaterialToolbar
-    private lateinit var viewModel: AccountViewModel
+    private lateinit var viewModel : AccountViewModel
     private lateinit var editInstitutionLayout : TextInputLayout
     private lateinit var editInstitutionText: EditText
     private lateinit var editAccountLayout : TextInputLayout
-    private lateinit var editAccountText: EditText
-    private lateinit var editDescriptionLayout: TextInputLayout
-    private lateinit var editDescriptionText: EditText
+    private lateinit var editAccountText : EditText
+    private lateinit var editDescriptionLayout : TextInputLayout
+    private lateinit var editDescriptionText : EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,7 +73,7 @@ class NewAccount : DialogFragment(), LifecycleObserver {
                     {
                         val institution = editInstitutionText.text.toString()
                         val account = editAccountText.text.toString()
-                        viewModel.insert(Account(0, account, institution, editDescriptionText.text.toString(),startingBalance))
+                        viewModel.insert(Account(0, institution, account, editDescriptionText.text.toString(),startingBalance))
                         findNavController().navigateUp()
                     }
                     true

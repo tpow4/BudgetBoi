@@ -8,6 +8,9 @@ interface AccountDao {
     @Query("SELECT * from Account")
     fun getAll(): Flow<List<Account>>
 
+    @Query("SELECT * FROM Account WHERE uid = :id")
+    fun loadUserById(id: Int): Flow<Account>
+
     @Query("SELECT * FROM Account WHERE institution LIKE :institution AND account_name LIKE :account LIMIT 1")
     fun findByName(institution: String, account: String) : Flow<Account>
 

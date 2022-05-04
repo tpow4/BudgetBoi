@@ -6,6 +6,8 @@ import kotlinx.coroutines.launch
 class AccountViewModel(private val repository: AccountRepository) : ViewModel() {
     val allAccounts: LiveData<List<Account>> = repository.accounts.asLiveData()
 
+    fun getAccountById(id: Int) = repository.getAccountById(id).asLiveData()
+
     fun insert(account: Account) = viewModelScope.launch {
         repository.insert(account)
     }
