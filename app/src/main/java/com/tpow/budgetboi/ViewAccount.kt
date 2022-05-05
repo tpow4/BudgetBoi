@@ -1,5 +1,7 @@
 package com.tpow.budgetboi
 
+import android.icu.text.NumberFormat
+import android.icu.util.Currency
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,9 +45,15 @@ class ViewAccount : Fragment() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
+        val numberFormat = NumberFormat.getInstance(NumberFormat.CURRENCYSTYLE)
+        numberFormat.minimumFractionDigits = 2
+        numberFormat.maximumFractionDigits = 2
+        numberFormat.currency = Currency.getInstance("USD")
+
         viewModel.getAccountById(args.accountId).observe(viewLifecycleOwner) { account ->
-            toolbar.title = account.accountName
-            textView.text = account.institution
+            toolbar.title = account.institution
+            toolbar.subtitle = account.accountName
+            textView.text = numberFormat.format(account.balance)
         }
     }
 }
