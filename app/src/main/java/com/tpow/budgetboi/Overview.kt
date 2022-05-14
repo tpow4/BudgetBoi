@@ -29,6 +29,11 @@ class Overview : Fragment() {
     private lateinit var toolbar : MaterialToolbar
     private var actionMode : ActionMode? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,10 +56,6 @@ class Overview : Fragment() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProvider(requireActivity(),
             AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
@@ -84,6 +85,8 @@ class Overview : Fragment() {
         val actionModeCallback = object : ActionMode.Callback {
             // Called when the action mode is created; startActionMode() was called
             override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
+                val inflater: MenuInflater = mode.menuInflater
+                inflater.inflate(R.menu.selected_account_menu, menu)
                 return true
             }
 

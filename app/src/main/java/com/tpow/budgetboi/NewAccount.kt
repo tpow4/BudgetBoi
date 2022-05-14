@@ -46,11 +46,6 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         return fragmentView
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(), AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setStyle(STYLE_NO_TITLE, com.google.android.material.R.style.ThemeOverlay_MaterialComponents)
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
@@ -61,6 +56,9 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        viewModel = ViewModelProvider(requireActivity(), AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
+
         toolbar.setupWithNavController(navController, appBarConfiguration)
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
