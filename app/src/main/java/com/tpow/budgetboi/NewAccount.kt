@@ -15,11 +15,6 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textfield.TextInputLayout
 
 class NewAccount : DialogFragment(), LifecycleObserver {
-
-    companion object {
-        fun newInstance() = NewAccount()
-    }
-
     private val startingBalance = 0.0
 
     private lateinit var toolbar : MaterialToolbar

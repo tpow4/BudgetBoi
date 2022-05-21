@@ -19,11 +19,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Overview : Fragment() {
-
-    companion object {
-        fun newInstance() = Overview()
-    }
-
     private lateinit var viewModel: AccountViewModel
     private lateinit var recyclerView : RecyclerView
     private lateinit var toolbar : MaterialToolbar

@@ -16,15 +16,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 
 class ViewAccount : Fragment() {
-
     private val args: ViewAccountArgs by navArgs()
     private lateinit var viewModel: AccountViewModel
     private lateinit var toolbar : MaterialToolbar
     private lateinit var textView: TextView
-
-    companion object {
-        fun newInstance() = ViewAccount()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
