@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/overview">
+    app:startDestination="@id/biometrics">
 
     <fragment
         android:id="@+id/overview"
@@ -38,5 +38,14 @@
         <argument
             android:name="accountId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/biometrics"
+        android:name="com.tpow.budgetboi.Biometrics"
+        android:label="fragment_biometrics"
+        tools:layout="@layout/fragment_biometrics" >
+        <action
+            android:id="@+id/action_biometrics_to_overview"
+            app:destination="@id/overview" />
     </fragment>
 </navigation>

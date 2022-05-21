@@ -39,7 +39,7 @@ class Overview : Fragment() {
 
         val addItemButton = fragmentView.findViewById<FloatingActionButton>(R.id.floatingActionButton)
         addItemButton.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.newAccount)
+            view.findNavController().navigate(OverviewDirections.actionOverviewToNewAccount())
         }
 
         return fragmentView
