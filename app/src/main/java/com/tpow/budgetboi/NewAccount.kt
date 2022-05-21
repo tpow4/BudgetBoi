@@ -15,21 +15,16 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textfield.TextInputLayout
 
 class NewAccount : DialogFragment(), LifecycleObserver {
-
-    companion object {
-        fun newInstance() = NewAccount()
-    }
-
     private val startingBalance = 0.0
 
     private lateinit var toolbar : MaterialToolbar
-    private lateinit var viewModel: AccountViewModel
+    private lateinit var viewModel : AccountViewModel
     private lateinit var editInstitutionLayout : TextInputLayout
     private lateinit var editInstitutionText: EditText
     private lateinit var editAccountLayout : TextInputLayout
-    private lateinit var editAccountText: EditText
-    private lateinit var editDescriptionLayout: TextInputLayout
-    private lateinit var editDescriptionText: EditText
+    private lateinit var editAccountText : EditText
+    private lateinit var editDescriptionLayout : TextInputLayout
+    private lateinit var editDescriptionText : EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,11 +41,6 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         return fragmentView
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(), AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setStyle(STYLE_NO_TITLE, com.google.android.material.R.style.ThemeOverlay_MaterialComponents)
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
@@ -61,6 +51,9 @@ class NewAccount : DialogFragment(), LifecycleObserver {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        viewModel = ViewModelProvider(requireActivity(), AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
+
         toolbar.setupWithNavController(navController, appBarConfiguration)
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -73,7 +66,7 @@ class NewAccount : DialogFragment(), LifecycleObserver {
                     {
                         val institution = editInstitutionText.text.toString()
                         val account = editAccountText.text.toString()
-                        viewModel.insert(Account(0, account, institution, editDescriptionText.text.toString(),startingBalance))
+                        viewModel.insert(Account(0, institution, account, editDescriptionText.text.toString(),startingBalance))
                         findNavController().navigateUp()
                     }
                     true

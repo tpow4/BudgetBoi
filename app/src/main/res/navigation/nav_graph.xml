@@ -14,8 +14,9 @@
             android:id="@+id/action_overview_to_newAccount"
             app:destination="@id/newAccount" />
         <action
-            android:id="@+id/action_overview_to_editAccount"
-            app:destination="@id/editAccount" />
+            android:id="@+id/action_overview_to_viewAccount"
+            app:destination="@id/viewAccount" >
+        </action>
     </fragment>
     <dialog
         android:id="@+id/newAccount"
@@ -27,12 +28,15 @@
             app:destination="@id/overview" />
     </dialog>
     <fragment
-        android:id="@+id/editAccount"
+        android:id="@+id/viewAccount"
         android:name="com.tpow.budgetboi.ViewAccount"
-        android:label="@string/edit_account_title"
-        tools:layout="@layout/edit_account_fragment" >
+        android:label="@string/view_account_title"
+        tools:layout="@layout/view_account_fragment" >
         <action
-            android:id="@+id/action_editAccount_to_overview"
+            android:id="@+id/action_viewAccount_to_overview"
             app:destination="@id/overview" />
+        <argument
+            android:name="accountId"
+            app:argType="integer" />
     </fragment>
 </navigation>

@@ -1,18 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
+    id 'com.google.devtools.ksp' version "$ksp_version"
     id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "31.0.0"
+    compileSdkVersion 32
+    buildToolsVersion "32.0.0"
 
     defaultConfig {
         applicationId "com.tpow.budgetboi"
-        minSdkVersion 31
-        targetSdkVersion 31
+        minSdkVersion 32
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
@@ -32,6 +32,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.tpow.budgetboi'
 }
 
 dependencies {
@@ -49,7 +50,7 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$rootProject.navigationComposeVersion"
 
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
-    kapt  "androidx.room:room-compiler:$rootProject.roomVersion"
+    ksp "androidx.room:room-compiler:$rootProject.roomVersion"
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
 
     implementation "androidx.recyclerview:recyclerview-selection:$rootProject.reyclclerSelectionVersion"
@@ -66,6 +67,6 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"    
 
     // coroutines for getting off the UI thread
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 }

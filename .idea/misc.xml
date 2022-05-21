@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FunRepo/BudgetBoi/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.361" />
         <entry key="..\:/FunRepo/BudgetBoi/app/src/main/res/layout/account_item.xml" value="0.2608695652173913" />
         <entry key="..\:/FunRepo/BudgetBoi/app/src/main/res/layout/activity_main.xml" value="0.5538949275362319" />
         <entry key="..\:/FunRepo/BudgetBoi/app/src/main/res/layout/new_account_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/FunRepo/BudgetBoi/app/src/main/res/layout/overview_fragment.xml" value="0.2608695652173913" />
         <entry key="..\:/FunRepo/BudgetBoi/app/src/main/res/layout/settings_fragment.xml" value="0.2695035460992908" />
+        <entry key="..\:/FunRepo/BudgetBoi/app/src/main/res/layout/view_account_fragment.xml" value="0.35989583333333336" />
         <entry key="..\:/FunRepo/BudgetBoi/app/src/main/res/menu/overview_menu.xml" value="0.55" />
         <entry key="..\:/FunRepo/BudgetBoi/app/src/main/res/menu/selected_account_menu.xml" value="0.32083333333333336" />
         <entry key="..\:/Users/ThomasPowers/fun/BudgetBoi/app/src/main/res/drawable/ic_baseline_account_balance_24.xml" value="0.2296875" />

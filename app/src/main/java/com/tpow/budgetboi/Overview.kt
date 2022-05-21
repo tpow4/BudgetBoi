@@ -19,15 +19,15 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Overview : Fragment() {
-
-    companion object {
-        fun newInstance() = Overview()
-    }
-
     private lateinit var viewModel: AccountViewModel
     private lateinit var recyclerView : RecyclerView
     private lateinit var toolbar : MaterialToolbar
     private var actionMode : ActionMode? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,10 +51,6 @@ class Overview : Fragment() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProvider(requireActivity(),
             AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]
@@ -135,11 +131,11 @@ class Overview : Fragment() {
 
                         if(items.size == 1)
                         {
-                            actionMode?.title = items[0].accountName
+                            actionMode?.title = items.first().accountName
                         }
                         else
                         {
-                            actionMode?.title = items.size.toString() + " accounts"
+                            actionMode?.title = "${items.size} accounts"
                         }
                     }
                     else
