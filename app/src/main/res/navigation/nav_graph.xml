@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/overview">
+
+    <fragment
+        android:id="@+id/overview"
+        android:name="com.tpow.budgetboi.Overview"
+        android:label="@string/overview_title"
+        tools:layout="@layout/overview_fragment">
+        <action
+            android:id="@+id/action_overview_to_newAccount"
+            app:destination="@id/newAccount" />
+        <action
+            android:id="@+id/action_overview_to_viewAccount"
+            app:destination="@id/viewAccount" >
+        </action>
+    </fragment>
+    <dialog
+        android:id="@+id/newAccount"
+        android:name="com.tpow.budgetboi.NewAccount"
+        android:label="@string/overview_title"
+        tools:layout="@layout/new_account_fragment">
+        <action
+            android:id="@+id/action_newAccount_to_overview"
+            app:destination="@id/overview" />
+    </dialog>
+    <fragment
+        android:id="@+id/viewAccount"
+        android:name="com.tpow.budgetboi.ViewAccount"
+        android:label="@string/view_account_title"
+        tools:layout="@layout/view_account_fragment" >
+        <action
+            android:id="@+id/action_viewAccount_to_overview"
+            app:destination="@id/overview" />
+        <argument
+            android:name="accountId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
