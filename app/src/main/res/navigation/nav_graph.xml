@@ -15,8 +15,11 @@
             app:destination="@id/newAccount" />
         <action
             android:id="@+id/action_overview_to_viewAccount"
-            app:destination="@id/viewAccount" >
-        </action>
+            app:destination="@id/viewAccount"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"></action>
     </fragment>
     <dialog
         android:id="@+id/newAccount"
@@ -34,7 +37,11 @@
         tools:layout="@layout/view_account_fragment" >
         <action
             android:id="@+id/action_viewAccount_to_overview"
-            app:destination="@id/overview" />
+            app:destination="@id/overview"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="accountId"
             app:argType="integer" />
@@ -47,6 +54,10 @@
         <action
             android:id="@+id/action_biometrics_to_overview"
             app:destination="@id/overview"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/biometrics"
             app:popUpToInclusive="true" />
     </fragment>
