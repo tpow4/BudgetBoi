@@ -49,7 +49,7 @@ class Overview : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = findNavController()
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.overview))
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
         viewModel = ViewModelProvider(requireActivity(),

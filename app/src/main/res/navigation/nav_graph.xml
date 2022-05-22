@@ -46,6 +46,8 @@
         tools:layout="@layout/fragment_biometrics" >
         <action
             android:id="@+id/action_biometrics_to_overview"
-            app:destination="@id/overview" />
+            app:destination="@id/overview"
+            app:popUpTo="@id/biometrics"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
