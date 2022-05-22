@@ -19,5 +19,6 @@
     <string name="new_account_helper">E.g. Savings, Checking, etc.</string>
 
     <string name="overview_delete_account">Delete</string>
+
     <string name="settings">Settings</string>
 </resources>

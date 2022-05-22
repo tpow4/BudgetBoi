@@ -31,6 +31,7 @@ task clean(type: Delete) {
 ext {
     activityVersion = '1.4.0'
     appCompatVersion = '1.4.1'
+    biometricVersion = '1.2.0-alpha04'
     constraintLayoutVersion = '2.1.4'
     coreVersion = '1.7.0'
     lifecycleVersion = '2.4.1'
