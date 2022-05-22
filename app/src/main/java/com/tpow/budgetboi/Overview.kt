@@ -2,6 +2,7 @@ package com.tpow.budgetboi
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -24,11 +25,6 @@ class Overview : Fragment() {
     private lateinit var toolbar : MaterialToolbar
     private var actionMode : ActionMode? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,9 +44,19 @@ class Overview : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.overview))
-        toolbar.setupWithNavController(navController, appBarConfiguration)
+        toolbar.setupWithNavController(findNavController(), appBarConfiguration)
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_settings -> {
+                    // Navigate to settings screen
+                    Toast.makeText(activity, "Hit", Toast.LENGTH_SHORT)
+                    findNavController().navigate(OverviewDirections.actionOverviewToSettings())
+                    true
+                }
+                else -> false
+            }
+        }
 
         viewModel = ViewModelProvider(requireActivity(),
             AccountViewModelFactory((activity?.application as BudgetBoiApplication).repository))[AccountViewModel::class.java]

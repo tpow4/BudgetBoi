@@ -49,6 +49,7 @@ dependencies {
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "androidx.navigation:navigation-compose:$rootProject.navigationComposeVersion"
     implementation "androidx.biometric:biometric-ktx:$rootProject.biometricVersion"
+    implementation "androidx.preference:preference-ktx:$rootProject.preferenceVersion"
 
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     ksp "androidx.room:room-compiler:$rootProject.roomVersion"

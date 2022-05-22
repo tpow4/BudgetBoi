@@ -33,6 +33,12 @@
         <entry key="..\:/Users/ThomasPowers/source/repos/BudgetBoi/app/src/main/res/layout/activity_main.xml" value="0.3671875" />
         <entry key="..\:/Users/ThomasPowers/source/repos/BudgetBoi/app/src/main/res/layout/fragment_biometrics.xml" value="0.3671875" />
         <entry key="..\:/Users/ThomasPowers/source/repos/BudgetBoi/app/src/main/res/layout/overview_fragment.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/ThomasPowers/source/repos/BudgetBoi/app/src/main/res/layout/settings_fragment.xml" value="0.3671875" />
+        <entry key="..\:/Users/ThomasPowers/source/repos/BudgetBoi/app/src/main/res/layout/view_account_fragment.xml" value="0.3671875" />
+        <entry key="..\:/Users/ThomasPowers/source/repos/BudgetBoi/app/src/main/res/menu/new_account_menu.xml" value="0.215625" />
+        <entry key="..\:/Users/ThomasPowers/source/repos/BudgetBoi/app/src/main/res/menu/overview_menu.xml" value="0.3671875" />
+        <entry key="..\:/Users/ThomasPowers/source/repos/BudgetBoi/app/src/main/res/menu/selected_account_menu.xml" value="0.215625" />
+        <entry key="..\:/Users/ThomasPowers/source/repos/BudgetBoi/app/src/main/res/menu/view_account_menu.xml" value="0.215625" />
       </map>
     </option>
   </component>
