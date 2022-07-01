@@ -1,2 +1,2 @@
 # BudgetBoi
-Sandbox for Android Development. Potential project later?
+Sandbox for Android Development. Simple personal finance app
