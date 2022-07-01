@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.6.21"
-    ext.ksp_version = "1.6.21-1.0.5"
+    ext.kotlin_version = "1.7.0"
+    ext.ksp_version = "1.7.0-1.0.6"
     repositories {
         google()
         mavenCentral()
@@ -10,7 +10,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0-rc01"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -29,17 +29,17 @@ task clean(type: Delete) {
 }
 
 ext {
-    activityVersion = '1.4.0'
-    appCompatVersion = '1.4.1'
+    activityVersion = '1.5.0'
+    appCompatVersion = '1.4.2'
     biometricVersion = '1.2.0-alpha04'
     constraintLayoutVersion = '2.1.4'
-    coreVersion = '1.7.0'
-    lifecycleVersion = '2.4.1'
-    materialVersion = '1.7.0-alpha01'
+    coreVersion = '1.8.0'
+    lifecycleVersion = '2.5.0'
+    materialVersion = '1.7.0-alpha02'
     roomVersion = '2.4.2'
-    navigationVersion = '2.4.2'
-    navigationComposeVersion = '2.4.2'
-    fragmentVersion = '1.4.1'
+    navigationVersion = '2.5.0'
+    navigationComposeVersion = '2.5.0'
+    fragmentVersion = '1.5.0'
     reyclclerSelectionVersion = '1.1.0'
     reyclclerWidgetVersion = '1.2.1'
 }
