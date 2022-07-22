@@ -7,7 +7,7 @@ plugins {
 
 android {
     compileSdkVersion 32
-    buildToolsVersion "32.1.0-rc1"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.tpow.budgetboi"
@@ -15,7 +15,6 @@ android {
         targetSdkVersion 32
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -68,6 +67,6 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"    
 
     // coroutines for getting off the UI thread
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 }
