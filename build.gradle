@@ -8,9 +8,9 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.1'
+        classpath 'com.android.tools.build:gradle:7.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -29,17 +29,17 @@ task clean(type: Delete) {
 }
 
 ext {
-    activityVersion = '1.5.0'
-    appCompatVersion = '1.4.2'
+    activityVersion = '1.5.1'
+    appCompatVersion = '1.5.0'
     biometricVersion = '1.2.0-alpha04'
     constraintLayoutVersion = '2.1.4'
     coreVersion = '1.8.0'
-    lifecycleVersion = '2.5.0'
-    materialVersion = '1.7.0-alpha03'
-    roomVersion = '2.4.2'
-    navigationVersion = '2.5.0'
-    navigationComposeVersion = '2.5.0'
-    fragmentVersion = '1.5.0'
+    lifecycleVersion = '2.5.1'
+    materialVersion = '1.7.0-beta01'
+    roomVersion = '2.4.3'
+    navigationVersion = '2.5.1'
+    navigationComposeVersion = '2.5.1'
+    fragmentVersion = '1.5.2'
     reyclclerSelectionVersion = '1.1.0'
     reyclclerWidgetVersion = '1.2.1'
 }
