@@ -36,7 +36,7 @@ ext {
     coreVersion = '1.9.0'
     lifecycleVersion = '2.5.1'
     materialVersion = '1.9.0-beta01'
-    roomVersion = '2.4.3'
+    roomVersion = '2.5.1'
     navigationVersion = '2.5.3'
     navigationComposeVersion = '2.5.3'
     fragmentVersion = '1.5.4'
