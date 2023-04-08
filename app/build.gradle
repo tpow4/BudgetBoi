@@ -62,8 +62,8 @@ dependencies {
     // testing frameworks
     testImplementation 'junit:junit:4.13.2'
     testImplementation "androidx.room:room-testing:$rootProject.roomVersion"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"    
 
     // coroutines for getting off the UI thread
