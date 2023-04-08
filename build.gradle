@@ -35,7 +35,7 @@ ext {
     constraintLayoutVersion = '2.1.4'
     coreVersion = '1.9.0'
     lifecycleVersion = '2.5.1'
-    materialVersion = '1.8.0-alpha02'
+    materialVersion = '1.9.0-beta01'
     roomVersion = '2.4.3'
     navigationVersion = '2.5.3'
     navigationComposeVersion = '2.5.3'
